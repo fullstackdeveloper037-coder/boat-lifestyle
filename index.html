@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,70 +26,41 @@
       color: #111;
     }
 
-/* ================= Snow Layer ================= */
-#snowfall{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:9999;
-  overflow:hidden;
+
+
+/* Top Category Bar */
+.category-bar {
+  display: flex;
+  overflow-x: auto;
+  padding: 2px 5px; /* reduced from 7px */
+  gap: 1px; /* better than margin for tighter control */
+  background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
-.snowflake{
-  position:absolute;
-  top:-10px;
-  background:#fff;
-  border-radius:50%;
-  opacity:0.8;
-  filter:blur(0.6px);
-  animation-name:snow-fall;
-  animation-timing-function:linear;
-  animation-iteration-count:infinite;
+.category {
+  flex: 0 0 auto;
+  width: 85px; /* slightly smaller for tighter fit */
+  text-align: center;
+  margin-right: 0; /* remove extra gap */
 }
 
-/* Vertical fall + slight right drift (matches screenshot feel) */
-@keyframes snow-fall{
-  0%{
-    transform:translate(0, 0);
-  }
-  100%{
-    transform:translate(40px, 110vh);
-  }
+.category img {
+  width: 74px; /* slightly reduced */
+  height: 74px;
+  object-fit: contain;
 }
 
-
-    /* Top Category Bar */
-    .category-bar {
-      display: flex;
-      overflow-x: auto;
-      padding: 10px;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-    }
-
-    .category {
-      flex: 0 0 auto;
-      width: 100px;
-      text-align: center;
-      margin-right: 10px;
-    }
-
-    .category img {
-      width: 74px;
-      height: 74px;
-      object-fit: contain;
-    }
-
-    .category p {
-      font-size: 10px;
-      margin-top: 4px;
-       font-weight: 700;
+.category p {
+  font-size: 10px;
+  margin-top: 2px; /* reduce vertical gap */
+  font-weight: 700;
   color: #222;
-  letter-spacing: 0.2px;
-  text-transform: none;
+  letter-spacing: 0.1px;
   font-family: 'Poppins', sans-serif;
-    }
-    
+}
+
+
     .header-nav-bar {
       position: fixed;
       top: 0;
@@ -593,42 +565,6 @@
   </div>
   
   
-  <!-- Snow container -->
-<div id="snowfall"></div>
-
-
-<script>
-const snowfall = document.getElementById("snowfall");
-
-/* Adjust these for density & performance */
-const SNOW_INTERVAL = 120;   // lower = more snow
-const MIN_SIZE = 2;
-const MAX_SIZE = 6;
-const MIN_DURATION = 6;
-const MAX_DURATION = 12;
-
-function createSnowflake(){
-  const snow = document.createElement("div");
-  snow.className = "snowflake";
-
-  const size = Math.random() * (MAX_SIZE - MIN_SIZE) + MIN_SIZE;
-  const duration = Math.random() * (MAX_DURATION - MIN_DURATION) + MIN_DURATION;
-
-  snow.style.width = size + "px";
-  snow.style.height = size + "px";
-  snow.style.left = Math.random() * 100 + "vw";
-  snow.style.opacity = Math.random() * 0.6 + 0.3;
-  snow.style.animationDuration = duration + "s";
-
-  snowfall.appendChild(snow);
-
-  /* Remove after animation completes */
-  setTimeout(() => snow.remove(), duration * 1000);
-}
-
-/* Continuous generation */
-setInterval(createSnowflake, SNOW_INTERVAL);
-</script>
 
   
   <!-- Category Bar -->
@@ -682,6 +618,12 @@ setInterval(createSnowflake, SNOW_INTERVAL);
     <img src="https://i.supaimg.com/d2381549-1c41-4c4e-9838-2154b7642f47.png" alt="">
     <p>Wired Headphones</p>
   </div>
+
+  <div class="category" onclick="window.location.href='https://dhamaka-sale-is-live.pages.dev/'" style="cursor:pointer;">
+    <img src="https://i.ibb.co/2pKWMMn/1080x1080-057c11d1-93b5-47c6-a947-e146c8046470-100-X100.png" alt="">
+    <p>Dashcams</p>
+  </div>
+
 
   <div class="category" onclick="window.location.href='https://dhamaka-sale-is-live.pages.dev/'" style="cursor:pointer;">
     <img src="https://i.supaimg.com/7f49ffc6-45a9-48d4-92a0-fee398e1a3db.png" alt="">
